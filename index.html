@@ -7,49 +7,142 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Encabezado -->
-  <header>
-    <h1>💰 Helios Finanzas</h1>
-    <p>Planifica y optimiza tus finanzas personales</p>
-  </header>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h2>Helios Finanzas</h2>
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#finanzas">Finanzas</a></li>
+      <li><a href="#graficos">Gráficos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
 
-  <!-- Banner de bienvenida -->
-  <section class="banner">
-    <h2>¡Bienvenido a tu Panel Financiero!</h2>
-    <p>Visualiza tu progreso y alcanza tus metas</p>
+  <!-- Hero -->
+  <section class="hero" id="inicio">
+    <h1>Tu futuro financiero comienza aquí</h1>
+    <p>Confianza, claridad y control de tus finanzas</p>
   </section>
 
-  <!-- Contenido principal -->
-  <main>
-    <!-- Formulario simple -->
-    <section class="finanzas">
-      <h3>Tus Finanzas</h3>
-      <label>Salario Mensual</label>
-      <input type="number" value="800000" readonly>
-      
-      <label>Gastos Fijos</label>
-      <input type="number" value="400000" readonly>
-      
-      <label>Meta Ahorro</label>
-      <input type="number" value="100000" readonly>
-      
-      <button>Actualizar Datos</button>
-    </section>
+  <!-- Finanzas -->
+  <section class="finanzas" id="finanzas">
+    <h3>Tus Finanzas</h3>
+    <label>Salario Mensual</label>
+    <input id="salario" type="number" value="800000">
+    <label>Gastos Fijos</label>
+    <input id="gastos" type="number" value="400000">
+    <label>Meta Ahorro</label>
+    <input id="meta" type="number" value="100000">
+    <button onclick="actualizarDatos()">Actualizar Datos</button>
+  </section>
 
-    <!-- Dashboard simple -->
-    <section class="dashboard">
-      <h3>Dashboard Financiero</h3>
-      <div class="card">Disponible: $300,000</div>
-      <div class="card">Tasa Ahorro: 37%</div>
-      <div class="card">Meta: 8 meses</div>
-      <div class="card">Rentabilidad: 4.2%</div>
-    </section>
-  </main>
+  <!-- Dashboard -->
+  <section class="dashboard">
+    <h3>Dashboard Financiero</h3>
+    <div class="card" id="disponible">Disponible: $0</div>
+    <div class="card" id="tasa">Tasa Ahorro: 0%</div>
+    <div class="card" id="meses">Meta: 0 meses</div>
+  </section>
 
-  <!-- Pie de página -->
-  <footer>
-    <p>Simulador de Finanzas Personales • 2026</p>
-    <p>Prueba para push en gut hub</p>
+  <!-- Gráficos -->
+  <section class="graficos" id="graficos">
+    <h3>📊 Gráficos Financieros</h3>
+    <div class="chart-container"><canvas id="ahorroChart"></canvas></div>
+    <div class="chart-container"><canvas id="gastosChart"></canvas></div>
+    <div class="chart-container"><canvas id="comparacionChart"></canvas></div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contacto">
+    <p>© 2026 Helios Finanzas - Benjamin Orellana</p>
   </footer>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Gráfico de ahorro mensual
+    const ctxAhorro = document.getElementById('ahorroChart').getContext('2d');
+    const ahorroChart = new Chart(ctxAhorro, {
+      type: 'line',
+      data: {
+        labels: ['Enero','Febrero','Marzo','Abril','Mayo','Junio'],
+        datasets: [{
+          label: 'Ahorro Mensual',
+          data: [0,0,0,0,0,0],
+          borderColor: '#047857',
+          backgroundColor: 'rgba(16,185,129,0.3)',
+          fill: true,
+          tension: 0.3
+        }]
+      }
+    });
+
+    // Gráfico de gastos
+    const ctxGastos = document.getElementById('gastosChart').getContext('2d');
+    const gastosChart = new Chart(ctxGastos, {
+      type: 'doughnut',
+      data: {
+        labels: ['Arriendo','Comida','Transporte','Otros'],
+        datasets: [{
+          data: [0,0,0,0],
+          backgroundColor: ['#10b981','#047857','#065f46','#6ee7b7']
+        }]
+      }
+    });
+
+    // Gráfico comparativo
+    const ctxComparacion = document.getElementById('comparacionChart').getContext('2d');
+    const comparacionChart = new Chart(ctxComparacion, {
+      type: 'bar',
+      data: {
+        labels: ['Ingresos','Gastos'],
+        datasets: [{
+          data: [800000,400000],
+          backgroundColor: ['#10b981','#047857']
+        }]
+      }
+    });
+
+    // Función para actualizar datos
+    function actualizarDatos() {
+      const salario = parseInt(document.getElementById('salario').value);
+      const gastos = parseInt(document.getElementById('gastos').value);
+      const meta = parseInt(document.getElementById('meta').value);
+
+      const disponible = salario - gastos;
+      const tasaAhorro = ((meta / salario) * 100).toFixed(1);
+      const meses = Math.ceil(meta > 0 ? (meta / (disponible > 0 ? disponible : 1)) : 0);
+
+      // Dashboard
+      document.getElementById('disponible').textContent = `Disponible: $${disponible}`;
+      document.getElementById('tasa').textContent = `Tasa Ahorro: ${tasaAhorro}%`;
+      document.getElementById('meses').textContent = `Meta: ${meses} meses`;
+
+      // Actualizar gráficos
+      ahorroChart.data.datasets[0].data = [
+        disponible * 0.1,
+        disponible * 0.2,
+        disponible * 0.3,
+        disponible * 0.4,
+        disponible * 0.5,
+        disponible * 0.6
+      ];
+      ahorroChart.update();
+
+      gastosChart.data.datasets[0].data = [
+        gastos * 0.5,
+        gastos * 0.3,
+        gastos * 0.15,
+        gastos * 0.05
+      ];
+      gastosChart.update();
+
+      comparacionChart.data.datasets[0].data = [salario, gastos];
+      comparacionChart.update();
+    }
+
+    // Inicializar con valores por defecto
+    actualizarDatos();
+  </script>
 </body>
 </html>

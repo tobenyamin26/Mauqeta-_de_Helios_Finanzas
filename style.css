@@ -1,72 +1,84 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   margin: 0;
-  background: #f4f4f4;
-  color: #333;
+  background: #f9fafb;
+  color: #111827;
 }
 
-header {
-  background: #1e40af;
+/* Navbar */
+.navbar {
+  background: #065f46;
   color: white;
-  text-align: center;
-  padding: 1rem;
-}
-
-.banner {
-  background: #059669;
-  color: white;
-  text-align: center;
-  padding: 1rem;
-}
-
-main {
   display: flex;
-  gap: 2rem;
-  padding: 2rem;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
 }
+.navbar ul { list-style: none; display: flex; gap: 1rem; }
+.navbar a { color: #d1fae5; text-decoration: none; font-weight: bold; }
 
-.finanzas, .dashboard {
-  background: white;
-  padding: 1rem;
-  border-radius: 8px;
-  flex: 1;
-}
-
-.finanzas label {
-  display: block;
-  margin-top: 0.5rem;
-}
-
-.finanzas input {
-  width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-button {
-  background: #f59e0b;
+/* Hero */
+.hero {
+  background: linear-gradient(90deg, #047857, #10b981);
   color: white;
-  border: none;
-  padding: 0.7rem;
-  border-radius: 5px;
-  cursor: pointer;
+  text-align: center;
+  padding: 3rem 2rem;
 }
 
-button:hover {
-  background: #d97706;
+/* Secciones */
+section {
+  background: white;
+  padding: 2rem;
+  margin: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
+h3 { color: #047857; margin-bottom: 1rem; }
 
-.dashboard .card {
-  background: #e5e7eb;
+/* Inputs y botones */
+input, button {
+  display: block;
+  width: 100%;
+  margin: 0.5rem 0 1rem;
+  padding: 0.8rem;
+  border: 1px solid #10b981;
+  border-radius: 8px;
+}
+button {
+  background: #047857; color: white; font-weight: bold;
+}
+button:hover { background: #065f46; }
+
+/* Dashboard cards */
+.card {
+  background: #ecfdf5;
   padding: 1rem;
   margin: 0.5rem 0;
-  border-radius: 5px;
+  border-radius: 8px;
+  text-align: center;
+  color: #065f46;
+  font-weight: bold;
 }
 
-footer {
-  text-align: center;
-  background: #1e40af;
-  color: white;
-  padding: 1rem;
+/* Gráficos en grid */
+.graficos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
   margin-top: 2rem;
+}
+.chart-container {
+  background: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Footer */
+footer {
+  background: #065f46;
+  color: white;
+  text-align: center;
+  padding: 1rem;
 }
