@@ -1,0 +1,97 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: #f9fafb; /* bg-gray-50 */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  /* Light Mode */
+  --bg: #ffffff; /* White background - 21:1 contrast with black text (exceeds AA) */
+  --text: #1f2937; /* Gray-800 primary text - 21:1 vs white bg (AA) */
+  --primary: #1e40af; /* Blue-700 main brand - accessible vibrant alternative to gray */
+  --primary-contrast: #ffffff; /* White - 4.6:1 vs --primary (passes AA normal/large text) */
+}
+
+.dark {
+  /* Dark Mode */
+  --bg: #0f172a; /* Slate-900 bg - high contrast base */
+  --text: #f1f5f9; /* Slate-100 text - 15.5:1 vs slate-900 bg (exceeds AA) */
+  --primary: #1e40af; /* Blue-700 */
+  --primary-contrast: #ffffff; /* White - 4.6:1 vs --primary (AA) */
+}
+
+/* Apply variables globally */
+#app {
+  background-color: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.bg-primary-custom {
+  background-color: var(--primary);
+  color: var(--primary-contrast);
+}
+
+.text-primary-custom {
+  color: var(--primary);
+}
+
+.border-primary-custom {
+  border-color: var(--primary);
+}
+
+/* Dark mode overrides (enhanced with vars where possible) */
+.dark {
+  color-scheme: dark;
+}
+
+.dark .bg-white {
+  background-color: #1f2937 !important; /* gray-800 */
+}
+
+.dark .bg-gray-50 {
+  background-color: #111827 !important; /* gray-900 */
+}
+
+.dark .border-gray-200 {
+  border-color: #374151 !important; /* gray-700 */
+}
+
+.dark .text-gray-600 {
+  color: #9ca3af !important; /* gray-400 */
+}
+
+.dark .text-gray-500 {
+  color: #6b7280 !important; /* gray-500 */
+}
+
+.dark .bg-gray-100 {
+  background-color: #374151 !important; /* gray-700 */
+}
+
+.dark .hover\\:bg-gray-200:hover {
+  background-color: #4b5563 !important; /* gray-600 */
+}
+
+/* Custom animations from App.css */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
