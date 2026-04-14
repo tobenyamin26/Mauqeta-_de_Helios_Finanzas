@@ -1,97 +1,72 @@
-html, body {
-  height: 100%;
-}
-
 body {
-  background-color: #f9fafb; /* bg-gray-50 */
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f4f4f4;
+  color: #333;
 }
 
-:root {
-  /* Light Mode */
-  --bg: #ffffff; /* White background - 21:1 contrast with black text (exceeds AA) */
-  --text: #1f2937; /* Gray-800 primary text - 21:1 vs white bg (AA) */
-  --primary: #1e40af; /* Blue-700 main brand - accessible vibrant alternative to gray */
-  --primary-contrast: #ffffff; /* White - 4.6:1 vs --primary (passes AA normal/large text) */
+header {
+  background: #1e40af;
+  color: white;
+  text-align: center;
+  padding: 1rem;
 }
 
-.dark {
-  /* Dark Mode */
-  --bg: #0f172a; /* Slate-900 bg - high contrast base */
-  --text: #f1f5f9; /* Slate-100 text - 15.5:1 vs slate-900 bg (exceeds AA) */
-  --primary: #1e40af; /* Blue-700 */
-  --primary-contrast: #ffffff; /* White - 4.6:1 vs --primary (AA) */
+.banner {
+  background: #059669;
+  color: white;
+  text-align: center;
+  padding: 1rem;
 }
 
-/* Apply variables globally */
-#app {
-  background-color: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
+main {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
 }
 
-.bg-primary-custom {
-  background-color: var(--primary);
-  color: var(--primary-contrast);
+.finanzas, .dashboard {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  flex: 1;
 }
 
-.text-primary-custom {
-  color: var(--primary);
+.finanzas label {
+  display: block;
+  margin-top: 0.5rem;
 }
 
-.border-primary-custom {
-  border-color: var(--primary);
+.finanzas input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
 }
 
-/* Dark mode overrides (enhanced with vars where possible) */
-.dark {
-  color-scheme: dark;
+button {
+  background: #f59e0b;
+  color: white;
+  border: none;
+  padding: 0.7rem;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.dark .bg-white {
-  background-color: #1f2937 !important; /* gray-800 */
+button:hover {
+  background: #d97706;
 }
 
-.dark .bg-gray-50 {
-  background-color: #111827 !important; /* gray-900 */
+.dashboard .card {
+  background: #e5e7eb;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border-radius: 5px;
 }
 
-.dark .border-gray-200 {
-  border-color: #374151 !important; /* gray-700 */
+footer {
+  text-align: center;
+  background: #1e40af;
+  color: white;
+  padding: 1rem;
+  margin-top: 2rem;
 }
-
-.dark .text-gray-600 {
-  color: #9ca3af !important; /* gray-400 */
-}
-
-.dark .text-gray-500 {
-  color: #6b7280 !important; /* gray-500 */
-}
-
-.dark .bg-gray-100 {
-  background-color: #374151 !important; /* gray-700 */
-}
-
-.dark .hover\\:bg-gray-200:hover {
-  background-color: #4b5563 !important; /* gray-600 */
-}
-
-/* Custom animations from App.css */
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  75% { transform: translateX(5px); }
-}
-
-.animation-delay-2000 {
-  animation-delay: 2s;
-}
-
-.animation-delay-4000 {
-  animation-delay: 4s;
-}
-

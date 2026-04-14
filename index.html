@@ -1,193 +1,54 @@
 <!DOCTYPE html>
-<html lang="es" class="">
+<html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Helios Finanzas - Simulador de Finanzas Personales</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: "#1e40af", /* Updated to accessible blue-700 (WCAG AA compliant with white text @ 4.6:1) */
-            secondary: "#059669",
-            accent: "#f59e0b"
-          },
-          animation: {
-            blob: 'blob 7s infinite',
-            shake: 'shake 0.5s infinite'
-          },
-          keyframes: {
-            blob: {
-              '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
-              '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-              '66%': { transform: 'translate(-20px, 20px) scale(0.9)' }
-            },
-            shake: {
-              '0%, 100%': { transform: 'translateX(0)' },
-              '25%': { transform: 'translateX(-5px)' },
-              '75%': { transform: 'translateX(5px)' }
-            }
-          }
-        }
-      }
-    }
-  </script>
-  <link rel="stylesheet" href="style.css"> <!-- Fixed: was 'styles.css' -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Helios Finanzas</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-50 font-sans antialiased min-h-screen">
-  <!-- Dark mode class container - now uses CSS vars from style.css for AA accessibility -->
-  <div id="app" class="min-h-screen transition-colors duration-200 bg-primary-custom text-primary-custom">
-    
-    <!-- Header with accessible palette -->
-    <header class="bg-white border-b border-gray-200 shadow-sm dark:bg-gray-900 dark:border-gray-700 border-primary-custom">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <div class="flex justify-between items-center">
-          <div>
-            <h1 class="text-3xl font-bold text-primary-custom">💰 Helios Finanzas</h1> <!-- Uses custom var class -->
-            <p class="mt-1 text-gray-600 dark:text-gray-400">Hola, Usuario Ejemplo 👋 • Planifica y optimiza tus finanzas personales</p>
-          </div>
-          <div class="flex items-center gap-3">
-            <button id="dark-toggle" class="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 transition bg-primary-custom">
-              🌙
-            </button>
-            <button class="px-4 py-2 rounded-lg font-semibold bg-red-100 hover:bg-red-200 text-red-800 transition bg-primary-custom text-primary-contrast">
-              🚪 Logout
-            </button>
-          </div>
-        </div>
-      </div>
-    </header>
+<body>
+  <!-- Encabezado -->
+  <header>
+    <h1>💰 Helios Finanzas</h1>
+    <p>Planifica y optimiza tus finanzas personales</p>
+  </header>
 
-    <!-- Mock Welcome Banner - secondary preserved but AA checked -->
-    <div class="bg-gradient-to-r from-secondary to-green-600 text-white py-8 px-6"> <!-- 4.8:1 white on green (AA) -->
-      <div class="max-w-7xl mx-auto text-center">
-        <h2 class="text-2xl font-bold mb-2 text-primary-custom">¡Bienvenido a tu Panel Financiero!</h2>
-        <p>Visualiza tu progreso y alcanza tus metas financieras más rápido</p>
-      </div>
-    </div>
+  <!-- Banner de bienvenida -->
+  <section class="banner">
+    <h2>¡Bienvenido a tu Panel Financiero!</h2>
+    <p>Visualiza tu progreso y alcanza tus metas</p>
+  </section>
 
-    <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        
-        <!-- Sidebar -->
-        <div class="lg:col-span-1 space-y-6">
-          
-          <!-- Finance Form Mock -->
-          <div class="bg-white p-6 rounded-xl shadow-lg dark:bg-gray-800 bg-primary-custom">
-            <h3 class="text-xl font-bold mb-4 text-primary-contrast">📊 Tus Finanzas</h3> <!-- High contrast white on primary -->
-            <div class="space-y-4">
-              <div><label class="block text-sm font-medium mb-1 text-primary-contrast">Salario Mensual</label><input type="number" value="800,000" class="w-full p-3 border border-gray-300 rounded-lg" readonly></div>
-              <div><label class="block text-sm font-medium mb-1 text-primary-contrast">Gastos Fijos</label><input type="number" value="400,000" class="w-full p-3 border border-gray-300 rounded-lg" readonly></div>
-              <div><label class="block text-sm font-medium mb-1 text-primary-contrast">Meta Ahorro</label><input type="number" value="100,000" class="w-full p-3 border border-gray-300 rounded-lg" readonly></div>
-            </div>
-            <button class="w-full mt-6 bg-secondary text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition text-primary-contrast">
-              Actualizar Datos
-            </button>
-          </div>
+  <!-- Contenido principal -->
+  <main>
+    <!-- Formulario simple -->
+    <section class="finanzas">
+      <h3>Tus Finanzas</h3>
+      <label>Salario Mensual</label>
+      <input type="number" value="800000" readonly>
+      
+      <label>Gastos Fijos</label>
+      <input type="number" value="400000" readonly>
+      
+      <label>Meta Ahorro</label>
+      <input type="number" value="100000" readonly>
+      
+      <button>Actualizar Datos</button>
+    </section>
 
-          <!-- Settings Mock -->
-          <div class="bg-white p-6 rounded-xl shadow-lg dark:bg-gray-800 bg-primary-custom">
-            <h3 class="text-xl font-bold mb-4 text-primary-contrast">⚙️ Configuración</h3>
-            <div class="space-y-3">
-              <div><span class="font-medium text-primary-contrast">Escenario Activo:</span> Base</div>
-              <button class="w-full bg-accent text-white py-2 rounded-lg hover:bg-amber-600 transition text-primary-contrast">
-                + Nuevo Escenario
-              </button>
-            </div>
-          </div>
+    <!-- Dashboard simple -->
+    <section class="dashboard">
+      <h3>Dashboard Financiero</h3>
+      <div class="card">Disponible: $300,000</div>
+      <div class="card">Tasa Ahorro: 37%</div>
+      <div class="card">Meta: 8 meses</div>
+      <div class="card">Rentabilidad: 4.2%</div>
+    </section>
+  </main>
 
-        </div>
-
-        <!-- Main Content -->
-        <div class="lg:col-span-2 space-y-8">
-          
-          <!-- Financial Dashboard Mock -->
-          <div class="bg-white p-8 rounded-xl shadow-lg dark:bg-gray-800 bg-primary-custom">
-            <h3 class="text-2xl font-bold mb-6 text-primary-contrast">📈 Dashboard Financiero</h3>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div class="text-center p-4 bg-green-50 rounded-lg dark:bg-green-900/20 text-primary-custom">
-                <div class="text-2xl font-bold text-secondary">$300,000</div>
-                <div class="text-sm text-gray-600 dark:text-gray-400">Disponible</div>
-              </div>
-              <div class="text-center p-4 bg-blue-50 rounded-lg dark:bg-blue-900/20 text-primary-custom">
-                <div class="text-2xl font-bold text-blue-600">37%</div>
-                <div class="text-sm text-gray-600 dark:text-gray-400">Tasa Ahorro</div>
-              </div>
-              <div class="text-center p-4 bg-yellow-50 rounded-lg dark:bg-yellow-900/20 text-primary-custom">
-                <div class="text-2xl font-bold text-accent">8 meses</div>
-                <div class="text-sm text-gray-600 dark:text-gray-400">Meta</div>
-              </div>
-              <div class="text-center p-4 bg-purple-50 rounded-lg dark:bg-purple-900/20 text-primary-custom">
-                <div class="text-2xl font-bold text-purple-600">4.2%</div>
-                <div class="text-sm text-gray-600 dark:text-gray-400">Rentabilidad</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Charts Placeholder -->
-          <div class="bg-white p-8 rounded-xl shadow-lg dark:bg-gray-800 bg-primary-custom">
-            <h3 class="text-2xl font-bold mb-6 text-primary-contrast">📊 Gráficos</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div class="h-64 bg-gradient-to-br from-blue-400 to-purple-600 rounded-xl flex items-center justify-center text-primary-contrast">
-                <div class="text-white text-xl font-semibold">Gráfico de Progreso (Mock)</div>
-              </div>
-              <div class="h-64 bg-gradient-to-br from-green-400 to-emerald-600 rounded-xl flex items-center justify-center text-primary-contrast">
-                <div class="text-white text-xl font-semibold">Comparación Escenarios</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Other Sections Mock -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="bg-white p-6 rounded-xl shadow-lg dark:bg-gray-800 bg-primary-custom">
-              <h4 class="font-bold mb-3 text-primary-contrast">🏆 Logros (5/12)</h4>
-              <div class="space-y-2">
-                <div class="flex items-center gap-3 p-3 bg-green-50 rounded-lg text-primary-custom">⭐ Primeros ahorros</div>
-                <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg text-primary-custom">⭐ Meta mensual</div>
-              </div>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-lg dark:bg-gray-800 bg-primary-custom">
-              <h4 class="font-bold mb-3 text-primary-contrast">💡 Consejo Rápido</h4>
-              <p class="text-primary-custom">Reduce gastos variables en 10% y aumenta tu ahorro en $20,000/mes</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="mt-16 border-t border-gray-200 bg-white dark:bg-gray-900 dark:border-gray-700 border-primary-custom">
-      <div class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
-        <p class="text-center text-gray-500 dark:text-gray-400 text-primary-custom">
-          Simulador de Finanzas Personales • Planifica tu futuro financiero • 2026
-        </p>
-      </div>
-    </footer>
-
-  </div>
-
-  <script>
-    // Dark mode toggle
-    const toggle = document.getElementById('dark-toggle');
-    const app = document.getElementById('app');
-    
-    const isDark = localStorage.getItem('darkMode') === 'true';
-    if (isDark) {
-      app.classList.add('dark');
-      toggle.textContent = '☀️';
-    }
-    
-    toggle.addEventListener('click', () => {
-      app.classList.toggle('dark');
-      const newDark = app.classList.contains('dark');
-      toggle.textContent = newDark ? '☀️' : '🌙';
-      localStorage.setItem('darkMode', newDark);
-    });
-  </script>
+  <!-- Pie de página -->
+  <footer>
+    <p>Simulador de Finanzas Personales • 2026</p>
+  </footer>
 </body>
 </html>
-
