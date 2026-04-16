@@ -1,6 +1,7 @@
 body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
+  padding: 0;
   background: #f9fafb;
   color: #111827;
 }
@@ -15,7 +16,8 @@ body {
   position: sticky;
   top: 0;
 }
-.navbar ul { list-style: none; display: flex; gap: 1rem; }
+.navbar ul { list-style: none; display: flex; gap: 1rem;}
+.navbar ul li { display: inline; color: rgb(1, 1, 1); } 
 .navbar a { color: #d1fae5; text-decoration: none; font-weight: bold; }
 
 /* Hero */
