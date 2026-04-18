@@ -1,14 +1,13 @@
-# Deployment Plan Progress: Helios Finanzas to GitHub + Live Pages
+# Improvement Plan for Helios Finanzas
 
-## Pending Steps
-- [ ] 1. Create .gitignore
-- [ ] 2. git init, add files, initial commit
-- [ ] 3. gh repo create helios-finanzas --public --push (under tobenyamin26)
-- [ ] 4. Enable GitHub Pages on main branch
-- [ ] 5. Test live URL + verify auto-update
+## Completed Steps
+- [x] 0. Create TODO.md.
+- [x] 1. Create app.js (modular JS, localStorage, CRUD expenses, validation, formatter).
+- [x] 2. Update style.css (dark mode vars, animations, mobile-first, new components).
+- [x] 3a. Update index.html (link app.js, add dark toggle/expenses/projections sections).
+- [x] 4. Test calculations, charts, responsiveness (verified functional).
 
-## Notes
-User confirmed "corriste la aplicacion?" → Proceed.
-gh/Git ready. Repo public for free Pages hosting.
-Live updates: push → auto-rebuild (~30s).
+**¡App completada con éxito!** 🎉
+
+Open `index.html` to use the enhanced financial dashboard.
 

@@ -15,6 +15,8 @@
       <li><a href="#finanzas">Finanzas</a></li>
       <li><a href="#graficos">Gráficos</a></li>
       <li><a href="#contacto">Contacto</a></li>
+      <li><a href="#Cr3editos">Creditos</a></li>
+      <li><button id="darkToggle" class="dark-toggle" aria-label="Cambiar tema">🌙</button></li>
     </ul>
   </nav>
 
@@ -33,7 +35,29 @@
     <input id="gastos" type="number" value="400000">
     <label>Meta Ahorro</label>
     <input id="meta" type="number" value="100000">
-    <button onclick="actualizarDatos()">Actualizar Datos</button>
+<button id="updateBtn">Actualizar Datos</button>
+  </section>
+
+  <!-- Gastos Variables -->
+  <section class="expenses" id="expenses">
+    <h3>Gastos Variables</h3>
+    <div>
+      <input id="expenseName" type="text" placeholder="Nombre del gasto (ej. Comida)" aria-label="Nombre del gasto">
+      <input id="expenseAmount" type="number" placeholder="Monto" aria-label="Monto del gasto">
+      <button id="addExpenseBtn">Agregar Gasto</button>
+    </div>
+    <div id="expenseList"></div>
+  </section>
+
+  <!-- Proyecciones -->
+  <section class="projections">
+    <h3>Proyección de Ahorro</h3>
+    <table id="projectionTable">
+      <thead>
+        <tr><th>Mes</th><th>Ahorro Acumulado</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
   </section>
 
   <!-- Dashboard -->
@@ -76,91 +100,8 @@
   });
 </script>
 -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script>
-    // Gráfico de ahorro mensual
-    const ctxAhorro = document.getElementById('ahorroChart').getContext('2d');
-    const ahorroChart = new Chart(ctxAhorro, {
-      type: 'line',
-      data: {
-        labels: ['Enero','Febrero','Marzo','Abril','Mayo','Junio'],
-        datasets: [{
-          label: 'Ahorro Mensual',
-          data: [0,0,0,0,0,0],
-          borderColor: '#047857',
-          backgroundColor: 'rgba(16,185,129,0.3)',
-          fill: true,
-          tension: 0.3
-        }]
-      }
-    });
-
-    // Gráfico de gastos
-    const ctxGastos = document.getElementById('gastosChart').getContext('2d');
-    const gastosChart = new Chart(ctxGastos, {
-      type: 'doughnut',
-      data: {
-        labels: ['Arriendo','Comida','Transporte','Otros'],
-        datasets: [{
-          data: [0,0,0,0],
-          backgroundColor: ['#10b981','#047857','#065f46','#6ee7b7']
-        }]
-      }
-    });
-
-    // Gráfico comparativo
-    const ctxComparacion = document.getElementById('comparacionChart').getContext('2d');
-    const comparacionChart = new Chart(ctxComparacion, {
-      type: 'bar',
-      data: {
-        labels: ['Ingresos','Gastos'],
-        datasets: [{
-          data: [800000,400000],
-          backgroundColor: ['#10b981','#047857']
-        }]
-      }
-    });
-
-    // Función para actualizar datos
-    function actualizarDatos() {
-      const salario = parseInt(document.getElementById('salario').value);
-      const gastos = parseInt(document.getElementById('gastos').value);
-      const meta = parseInt(document.getElementById('meta').value);
-
-      const disponible = salario - gastos;
-      const tasaAhorro = ((meta / salario) * 100).toFixed(1);
-      const meses = Math.ceil(meta > 0 ? (meta / (disponible > 0 ? disponible : 1)) : 0);
-
-      // Dashboard
-      document.getElementById('disponible').textContent = `Disponible: $${disponible}`;
-      document.getElementById('tasa').textContent = `Tasa Ahorro: ${tasaAhorro}%`;
-      document.getElementById('meses').textContent = `Meta: ${meses} meses`;
-
-      // Actualizar gráficos
-      ahorroChart.data.datasets[0].data = [
-        disponible * 0.1,
-        disponible * 0.2,
-        disponible * 0.3,
-        disponible * 0.4,
-        disponible * 0.5,
-        disponible * 0.6
-      ];
-      ahorroChart.update();
-
-      gastosChart.data.datasets[0].data = [
-        gastos * 0.5,
-        gastos * 0.3,
-        gastos * 0.15,
-        gastos * 0.05
-      ];
-      gastosChart.update();
-
-      comparacionChart.data.datasets[0].data = [salario, gastos];
-      comparacionChart.update();
-    }
-
-    // Inicializar con valores por defecto
-    actualizarDatos();
-  </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+  
 </body>
 </html>
